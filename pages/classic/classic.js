@@ -24,7 +24,7 @@ Page({
   },
 
   /**
-   * Classic页面点赞函数
+   * Classic页面 - 点赞函数
    */
   onLike: function(event) {
     // console.log(event)
@@ -37,6 +37,13 @@ Page({
       console.log("点赞/取消点赞成功");
     });
   },
+
+  /**
+   * Classic页面 - navi事件监听函数
+   */
+  onNext: function() {},
+
+  onPrev: function() {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

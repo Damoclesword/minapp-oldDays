@@ -1,24 +1,25 @@
-.classic-container {
+.movie-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.classic-container .classic-header-image {
+.movie-container .movie-header-image {
     width: 750rpx;
     height: 500rpx;
 }
 
-.classic-container .classic-tag {
+.movie-container .movie-tag {
     position: relative;
     bottom: 58rpx;
-    left: 65rpx;
+    left: 30rpx;
     align-self: flex-start;
     width: 46rpx;
     height: 142rpx;
 }
 
-.classic-container .classic-content {
+.movie-container .movie-content {
     font-size: 36rpx;
-    max-width: 550rpx;
+    max-width: 560rpx;
+    margin-top: -35rpx;
 }
