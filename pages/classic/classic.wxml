@@ -1,3 +1,5 @@
-<c-like bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
-<c-episode index="{{classicData.index}}"></c-episode>
+<view class="header-container">
+    <c-episode index="{{classicData.index}}"></c-episode>    
+    <c-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
+</view>
 <c-moive imgSrc="{{classicData.image}}" content="{{classicData.content}}"></c-moive>
