@@ -1,4 +1,3 @@
-// components/like/index.js
 Component({
   /**
    * 组件的属性列表
@@ -10,6 +9,12 @@ Component({
       observer: function() {}
     },
     count: {
+      type: Number
+    },
+    art_id: {
+      type: Number
+    },
+    type: {
       type: Number
     }
   },
@@ -34,6 +39,14 @@ Component({
         count: count,
         like: !like
       });
+      let behaviour = this.properties.like ? "like" : "cancel";
+      this.triggerEvent(
+        "like",
+        {
+          behaviour: behaviour,
+        },
+        {}
+      );
     }
   }
 });

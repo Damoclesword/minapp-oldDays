@@ -1,0 +1,24 @@
+.classic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.classic-container .classic-header-image {
+    width: 750rpx;
+    height: 500rpx;
+}
+
+.classic-container .classic-tag {
+    position: relative;
+    bottom: 58rpx;
+    left: 65rpx;
+    align-self: flex-start;
+    width: 46rpx;
+    height: 142rpx;
+}
+
+.classic-container .classic-content {
+    font-size: 36rpx;
+    max-width: 550rpx;
+}

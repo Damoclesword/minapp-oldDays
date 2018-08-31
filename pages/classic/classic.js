@@ -1,21 +1,40 @@
 // pages/classic/classic.js
 import { ClassicModel } from "../../models/classic";
+import { LikeModel } from "../../models/like";
 let classic = new ClassicModel();
+let like = new LikeModel();
 
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    classicData: null
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    classic.getLatest((res) => {
+    classic.getLatest(res => {
       this.setData({
         classicData: res
       });
+    });
+  },
+
+  /**
+   * Classic页面点赞函数
+   */
+  onLike: function(event) {
+    // console.log(event)
+    let behaviour = event.detail.behaviour;
+    let data = {
+      art_id: this.data.classicData.id,
+      type: this.data.classicData.type
+    };
+    like.postLike(behaviour, data, res => {
+      console.log("点赞/取消点赞成功");
     });
   },
 

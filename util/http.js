@@ -26,9 +26,9 @@ class HTTP {
         appkey: config.appkey
       },
       success: res => {
-        //startsWidth必须是字符串格式
+        //startsWidth必须是字符串格式!
         let code = res.statusCode.toString();
-        if (code.startsWith("2")) {
+        if (code.startsWith("2") && params.success) {
           params.success(res.data);
         } else {
           let error_code = res.data.error_code;

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "c-like" : "/components/like/index"
+        "c-like" : "/components/like/index",
+        "c-moive": "/components/classic/moive/index"
     }
 }

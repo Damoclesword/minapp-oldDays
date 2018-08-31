@@ -1,1 +1,2 @@
-<c-like></c-like>
+<c-like bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
+<c-moive imgSrc="{{classicData.image}}" content="{{classicData.content}}"></c-moive>
