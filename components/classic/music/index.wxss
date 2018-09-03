@@ -1,1 +1,43 @@
-/* components/classic/music/index.wxss */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 750rpx;
+}
+
+.music-img {
+    /* 暂时添加will-change解决图片一闪问题 */
+    will-change: transform;
+    position: relative;
+    width: 422rpx;
+    height: 422rpx;
+    margin-top: 60rpx;
+    border-radius: 50%;
+    box-shadow: 1px 5px 8px #ebebeb;
+}
+
+.music-action {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.tag {
+    position: relative;
+    bottom: 30rpx;
+    left: 30rpx;
+    align-self: flex-start;
+    width: 44rpx;
+    height: 127rpx;
+}
+
+.content {
+    font-size: 36rpx;
+    max-width: 560rpx;
+    margin-top: -35rpx;
+}
