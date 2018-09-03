@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classicData: null
+    classicData: null,
+    first: false,
+    latest: true
   },
 
   /**
@@ -41,9 +43,27 @@ Page({
   /**
    * Classic页面 - navi事件监听函数
    */
-  onNext: function() {},
+  onNext: function() {
+    let index = this.data.classicData.index;
+    classic.getNext(index, res => {
+      this.setData({
+        classicData: res,
+        latest: classic.isLatest(res.index),
+        first: classic.isFirst(res.index)
+      });
+    });
+  },
 
-  onPrev: function() {},
+  onPrev: function() {
+    let index = this.data.classicData.index;
+    classic.getPrevious(index, res => {
+      this.setData({
+        classicData: res,
+        latest: classic.isLatest(res.index),
+        first: classic.isFirst(res.index)
+      });
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

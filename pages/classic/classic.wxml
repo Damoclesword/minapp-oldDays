@@ -4,5 +4,5 @@
         <c-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
     </view>
     <c-moive imgSrc="{{classicData.image}}" content="{{classicData.content}}"></c-moive>
-    <c-navi bind:left="onNext" bind:right="onPrev" class="navi" title="{{classicData.title}}"></c-navi>
+    <c-navi bind:left="onNext" bind:right="onPrev" class="navi" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}"></c-navi>
 </view>
