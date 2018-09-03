@@ -45,7 +45,7 @@ Page({
    */
   onNext: function() {
     let index = this.data.classicData.index;
-    classic.getNext(index, res => {
+    classic.getClassicPage(index, "next",res => {
       this.setData({
         classicData: res,
         latest: classic.isLatest(res.index),
@@ -56,7 +56,7 @@ Page({
 
   onPrev: function() {
     let index = this.data.classicData.index;
-    classic.getPrevious(index, res => {
+    classic.getClassicPage(index, "previous",res => {
       this.setData({
         classicData: res,
         latest: classic.isLatest(res.index),
