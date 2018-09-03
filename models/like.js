@@ -1,4 +1,6 @@
-import { HTTP } from "../util/http";
+import {
+  HTTP
+} from "../util/http";
 class LikeModel extends HTTP {
   /**
    * 提交like
@@ -27,11 +29,19 @@ class LikeModel extends HTTP {
   refreshCache(index, behaviour) {
     let currentClassic = wx.getStorageSync("classic-" + index);
     if (currentClassic) {
-      console.log("该页面有缓存！");
-      currentClassic.like_status = behaviour == "like" ? 1 : 0;
+      // console.log("该页面有缓存！");
+      if (behaviour == "like") {
+        currentClassic.like_status = 1;
+        currentClassic.fav_nums += 1;
+      } else {
+        currentClassic.like_status = 0;
+        currentClassic.fav_nums -= 1;
+      }
       wx.setStorageSync("classic-" + index, currentClassic);
     }
   }
 }
 
-export { LikeModel };
+export {
+  LikeModel
+};
