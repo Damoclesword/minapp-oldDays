@@ -38,7 +38,14 @@ Component({
    * ready中监听音乐的状态
    */
   ready: function () {
+    mgr.onPause(()=>{
+      console.log("music is pause");
+      this.setData({
+        isPlay: false
+      })
+    });
     mgr.onStop(() => {
+      console.log("music is stop");
       this.setData({
         isPlay: false
       })
