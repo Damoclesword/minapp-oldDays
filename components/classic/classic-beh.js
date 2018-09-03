@@ -3,9 +3,9 @@ let classicBeh = Behavior({
     imgSrc: {
       type: String
     },
-    content: String
+    content: String,
+    hidden: Boolean
   },
-  attached: {},
   data: {},
   method: {}
 });

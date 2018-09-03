@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .header-image {
+    width: 750rpx;
+    height: 500rpx;
+}
+
+.container .tag {
+    position: relative;
+    bottom: 58rpx;
+    left: 30rpx;
+    align-self: flex-start;
+    width: 46rpx;
+    height: 142rpx;
+}
+
+.container .content {
+    font-size: 36rpx;
+    max-width: 560rpx;
+    margin-top: -35rpx;
+}

@@ -2,6 +2,8 @@
   "usingComponents": {
     "c-like": "/components/like/index",
     "c-moive": "/components/classic/moive/index",
+    "c-essay": "/components/classic/essay/index",
+    "c-music": "/components/classic/music/index",
     "c-episode": "/components/episode/index",
     "c-navi": "/components/navi/index"
   }
