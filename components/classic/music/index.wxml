@@ -1,6 +1,6 @@
 <view hidden="{{hidden}}" class="container">
     <view class="music-wrapper">
-        <image class="music-img {{isPlay ? 'rotation' : ''}}" src="{{imgSrc}}" />
+        <image class="music-img {{isPlay ? 'rotation' : 'rotation suspended'}}" src="{{imgSrc}}" />
         <image class="music-action" src="{{isPlay ? pauseSrc : playSrc}}" bind:tap="onPlay" />
     </view>
     <image class="tag" src="images/music@tag.png" />

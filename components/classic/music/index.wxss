@@ -45,6 +45,10 @@ to {
     -o-animation: rotation 20s linear infinite;
 }
 
+.suspended{
+    animation-play-state: paused;
+}
+
 .music-action {
     position: absolute;
     top: 0;
