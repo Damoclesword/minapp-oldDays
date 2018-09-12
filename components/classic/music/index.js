@@ -15,11 +15,7 @@ Component({
     url: {
       type: String,
       observer: function () {
-        if (mgr.src != this.properties.url) {
-          this.setData({
-            isPlay: false
-          });
-        }
+        this._recoverMusicStatus();
       }
     },
     title: String
@@ -38,18 +34,7 @@ Component({
    * ready中监听音乐的状态
    */
   ready: function () {
-    mgr.onPause(()=>{
-      console.log("music is pause");
-      this.setData({
-        isPlay: false
-      })
-    });
-    mgr.onStop(() => {
-      console.log("music is stop");
-      this.setData({
-        isPlay: false
-      })
-    });
+    this._monitorSwitch();
   },
 
   /**
@@ -68,6 +53,39 @@ Component({
       this.setData({
         isPlay: !this.properties.isPlay
       });
+    },
+
+    /**
+     * 用于判断当前播放的音乐与背景音乐是否一致
+     */
+    _recoverMusicStatus: function () {
+      if (mgr.src != this.properties.url) {
+        this.setData({
+          isPlay: false
+        });
+      } else {
+        this.setData({
+          isPlay: !mgr.paused
+        });
+      }
+    },
+
+    /**
+     * 监听音乐被主动切换后的事件
+     */
+    _monitorSwitch: function () {
+      mgr.onPause(() => {
+        this._recoverMusicStatus();
+      });
+      mgr.onStop(() => {
+        this._recoverMusicStatus();
+      });
+      mgr.onPlay(() => {
+        this._recoverMusicStatus();
+      });
+      mgr.onEnded(() => {
+        this._recoverMusicStatus();
+      });
     }
-  }
+  },
 });

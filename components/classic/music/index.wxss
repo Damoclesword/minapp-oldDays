@@ -5,15 +5,44 @@
     width: 750rpx;
 }
 
+.music-wrapper {
+    position: relative;
+    margin-top: 60rpx;
+    width: 100%;
+    height: 422rpx;
+    text-align: center;
+}
+
 .music-img {
     /* 暂时添加will-change解决图片一闪问题 */
     will-change: transform;
-    position: relative;
     width: 422rpx;
     height: 422rpx;
-    margin-top: 60rpx;
     border-radius: 50%;
     box-shadow: 1px 5px 8px #ebebeb;
+}
+
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotation {from {
+    -webkit-transform: rotate(0deg);
+}
+to {
+    -webkit-transform: rotate(360deg);
+}}
+
+.rotation {
+    animation: rotation 20s linear infinite;
+    -moz-animation: rotation 20s linear infinite;
+    -webkit-animation: rotation 20s linear infinite;
+    -o-animation: rotation 20s linear infinite;
 }
 
 .music-action {
