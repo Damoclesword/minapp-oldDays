@@ -1,4 +1,4 @@
-let classicBeh = Behavior({
+const classicBeh = Behavior({
   properties: {
     imgSrc: {
       type: String

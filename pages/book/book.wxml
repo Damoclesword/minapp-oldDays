@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="header">
+        <view class="search_box">
+            <image class="icon" src="/images/icon/search.png" />
+            <text>搜索图书名称</text>
+        </view>
+    </view>
+    <view class="sub_container">
+        <view class="category_title">
+            <text>书籍</text>
+        </view>
+        <view class="books_wrapper">
+            <block wx:key="id" wx:for="{{bookDatas}}" wx:for-item="bookData">
+                <c-book class="book" bookData="{{bookData}}"></c-book>
+            </block>
+        </view>
+    </view>
+</view>

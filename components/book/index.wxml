@@ -1,0 +1,12 @@
+<view class="container">
+    <image class="book_image" src="{{bookData.image}}" />  
+    <view class="description">
+        <text class="title">{{bookData.title}}</text>
+        <text class="author">{{bookData.author}}</text>
+        <view class="footer">
+            <text class="likes">{{bookData.fav_nums}} 喜欢</text>
+            ·
+            <text class="comments">0 短评</text>
+        </view>
+    </view>
+</view>
