@@ -1,5 +1,25 @@
 <view class="container">
     <view class="header">
-        
+        <image src="{{book.image}}" />
+        <view class="main">
+            <text class="title">{{book.title}}</text>
+            <text class="infomation">
+                <block wx:key="*this" wx:for="{{book.author}}" wx:for-item="author">{{author}}</block>著 / {{book.publisher}} / {{book.pubdate}}
+            </text>
+        </view>
+    </view>
+    <view class="summary">
+        <text class="lg_title">简介</text>
+        <text class="main">{{book.summary}}</text>
+    </view>
+    <view class="comments">
+        <text class="lg_title">短评</text>
+        <view class="main">
+            <block wx:for="{{comments}}" wx:for-item="comment" wx:key=" ">
+                <c-tag text="{{comment.content}}">
+                    <text class="fav_nums" slot="after">{{'+'+comment.nums}}</text>
+                </c-tag>
+            </block>
+        </view>
     </view>
 </view>
