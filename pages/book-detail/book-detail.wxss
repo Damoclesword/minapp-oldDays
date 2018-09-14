@@ -55,23 +55,31 @@
 }
 
 .comments {
-    margin-top: 20rpx;
+  margin-top: 20rpx;
 }
 
 .comments > .main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
 }
 
-.comments > .main >  c-tag {
-    margin-right: 16rpx;
-    margin-bottom: 12rpx;
+.comments c-tag {
+  margin-right: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.comments > .main > c-tag:nth-child(1) > view {
+  background: #fefae0;
+}
+
+.comments > .main > c-tag:nth-child(2) > view {
+  background: #f1fafe;
 }
 
 .comments .fav_nums {
-    font-size: 22rpx;
-    margin-left: 16rpx;
-    color: #bbbbbb;
+  font-size: 22rpx;
+  margin-left: 16rpx;
+  color: #bbbbbb;
 }
