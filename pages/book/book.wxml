@@ -7,11 +7,11 @@
     </view>
     <view class="sub_container">
         <view class="category_title">
-            <text>书籍</text>
+            <text>推荐</text>
         </view>
         <view class="books_wrapper">
             <block wx:key="id" wx:for="{{bookDatas}}" wx:for-item="bookData">
-                <c-book class="book" bookData="{{bookData}}"></c-book>
+                <c-book bind:book-detail="onBookDetailTap" class="book" bookData="{{bookData}}"></c-book>
             </block>
         </view>
     </view>

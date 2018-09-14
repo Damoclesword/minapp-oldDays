@@ -24,6 +24,16 @@ Page({
   },
 
   /**
+   * 监听Book点击事件并跳转到Book详情
+   */
+  onBookDetailTap: function (event) {
+    const bid = event.detail.bid;
+    wx.navigateTo({
+      url: `/pages/book-detail/book-detail?bid=${bid}`,
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {},

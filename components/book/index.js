@@ -6,7 +6,7 @@ Component({
   properties: {
     bookData: {
       type: Object,
-      observer: function(newVal, oldVal) {
+      observer: function (newVal, oldVal) {
         // console.log(newVal);
       }
     }
@@ -23,6 +23,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTap: function (e) {
+      const bid = this.properties.bookData.id;
+      this.triggerEvent(
+        "book-detail", {
+          bid
+        }
+      );
+    }
   }
 })
