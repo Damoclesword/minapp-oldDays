@@ -10,7 +10,7 @@
     </view>
     <view class="summary">
         <text class="lg_title">简介</text>
-        <text class="main">{{book.summary}}</text>
+        <text class="main" decode="{{true}}">{{filter.format(book.summary)}}</text>
     </view>
     <view class="comments">
         <text class="lg_title">短评</text>
@@ -23,3 +23,4 @@
         </view>
     </view>
 </view>
+<wxs src="../../util/filter.wxs" module="filter"></wxs>

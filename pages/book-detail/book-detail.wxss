@@ -52,6 +52,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+  text-indent: 56rpx;
 }
 
 .comments {
@@ -67,7 +68,7 @@
 
 .comments c-tag {
   margin-right: 16rpx;
-  margin-bottom: 12rpx;
+  margin-bottom: 16rpx;
 }
 
 .comments > .main > c-tag:nth-child(1) > view {
