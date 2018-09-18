@@ -1,3 +1,4 @@
+<wxs src="../../util/filter.wxs" module="filter"></wxs>
 <view class="container">
     <view class="header">
         <image src="{{book.image}}" />
@@ -15,7 +16,7 @@
     <view class="comments">
         <text class="lg_title">短评</text>
         <view class="main">
-            <block wx:for="{{comments}}" wx:for-item="comment" wx:key=" ">
+            <block wx:for="{{filter.limit(comments,10)}}" wx:for-item="comment" wx:key=" ">
                 <c-tag text="{{comment.content}}">
                     <text class="fav_nums" slot="after">{{'+'+comment.nums}}</text>
                 </c-tag>
@@ -23,4 +24,27 @@
         </view>
     </view>
 </view>
-<wxs src="../../util/filter.wxs" module="filter"></wxs>
+<view class="post-container">
+    <view class="wrapper" bind:tap="showPostingTap">
+        <image class="post" src="/images/icon/post.png" />
+        <text>写几句短评吧</text>
+    </view>
+    <view class="actions">
+        <c-like bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></c-like>
+        <image class="share" src="/images/icon/share.png" />
+    </view>
+</view>
+<view class="post-model-container" hidden="{{!posting}}">
+    <view class="model-overlay {{overlayBg}}" animation="{{animationBg}}"></view>
+    <view class="post-model model-pos" animation="{{animationModel}}">
+        <view class="header">
+            <text bind:tap="hidePostingTap">取消</text>
+            <text>确定</text>
+        </view>
+        <view class="content">
+            <view class="wrapper">
+                <input class="post" placeholder="请输入你的短评"></input>
+            </view>
+        </view>
+    </view>
+</view>
