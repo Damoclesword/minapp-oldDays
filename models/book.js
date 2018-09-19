@@ -41,6 +41,17 @@ class BookModel extends HTTP {
             url: `/book/${bid}/favor`
         });
     }
+    
+    postComments(bid, content){
+        return this.request({
+            url: `/book/add/short_comment`,
+            data: {
+                book_id: bid,
+                content
+            },
+            method: "POST"
+        });
+    }
 }
 
 export {

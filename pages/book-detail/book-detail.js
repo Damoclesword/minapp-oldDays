@@ -16,7 +16,8 @@ Page({
     book: null,
     comments: [],
     likeStatus: false,
-    likeCount: 0
+    likeCount: 0,
+    commentInput: null
   },
 
   /**
@@ -41,10 +42,61 @@ Page({
   },
 
   /**
+   * 获取评论提交的内容
+   */
+  getCommentInput: function (event) {
+    this.setData({
+      commentInput: event.detail.value
+    })
+  },
+
+  /**
    * 提交评论
    */
   postComments: function (event) {
-    this.triggerEvent('hidePostingTap');
+    const commentInput = event.detail.value || this.data.commentInput;
+    if (!commentInput) {
+      wx.showToast({
+        title: "评论不得为空",
+        icon: "none"
+      });
+      return;
+    }
+    if (commentInput.length > 12) {
+      wx.showToast({
+        title: "评论最多12个字",
+        icon: "none"
+      });
+      return;
+    }
+
+    bookModel.postComments(this.data.book.id, commentInput)
+      .then(res => {
+        if (res.error_code == 0) {
+          //刷新评论
+          this.data.comments.unshift({
+            content: commentInput,
+            nums: 1
+          });
+          this.setData({
+            comments: this.data.comments
+          })
+          wx.showToast({
+            title: "评论成功!",
+            icon: "none"
+          })
+        } else {
+          wx.showToast({
+            title: "评论失败，请重试!",
+            icon: "none"
+          })
+        }
+        this.c_model.hideModel();
+        //清空输入框
+        this.setData({
+          commentInput: ""
+        });
+      });
   },
 
   /**
@@ -94,7 +146,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.c_model = this.selectComponent('#c-model');
+    const c_model = this.selectComponent('#c-model');
+    this.c_model = c_model;
   },
 
   /**

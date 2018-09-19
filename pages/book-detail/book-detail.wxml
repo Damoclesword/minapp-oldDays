@@ -36,10 +36,10 @@
 </view>
 <c-model id="c-model" class="post-model">
     <!-- <view class="header" slot="header"> -->
-        <text class="header-button" bind:tap="hidePostingTap" slot="header">取消</text>
-        <text class="header-button" bind:tap="postComments" slot="header">确定</text>
+    <text class="header-button" bind:tap="hidePostingTap" slot="header">取消</text>
+    <text class="header-button" bind:tap="postComments" slot="header">确定</text>
     <!-- </view> -->
     <view class="wrapper" slot="content">
-        <input class="post" placeholder="请输入你的短评"></input>
+        <input bindconfirm="postComments" bindinput="getCommentInput" maxlength="12" cursor-spacing="10" class="post" placeholder="请输入你的短评"  value="{{commentInput}}"></input>
     </view>
 </c-model>
