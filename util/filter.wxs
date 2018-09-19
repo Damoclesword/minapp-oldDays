@@ -1,4 +1,8 @@
 /**
+ * filter.wxs 工具集
+ */
+
+/**
  * 用于处理文本的换行以及首段空格
  * @param text
  */
@@ -8,6 +12,11 @@ var format = function(text) {
   return text.replace(reg, "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 };
 
+/**
+ * 用于限制数组长度
+ * @param array 
+ * @param length 
+ */
 var limit = function(array, length) {
   if (!array) return;
   return array.slice(0, length);

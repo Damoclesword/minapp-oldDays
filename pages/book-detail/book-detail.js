@@ -23,7 +23,7 @@ Page({
   },
 
   /**
-   * Book-detail - 点赞函数
+   * book-detail - 点赞函数
    */
   onLike: function (event) {
     let behaviour = event.detail.behaviour;
@@ -34,6 +34,20 @@ Page({
     like.postLike(behaviour, data, res => {
       console.log("点赞/取消点赞成功");
     });
+  },
+
+  /**
+   * 短评点赞函数(接口原因，暂时未实现)
+   */
+  tagLikeTap: function (event) {
+    console.log(event.detail);
+  },
+
+  /**
+   * 提交评论函数
+   */
+  postComments: function (event) {
+    this.triggerEvent('hidePostingTap');
   },
 
   /**
@@ -94,7 +108,7 @@ Page({
    */
   fadeIn: function () {
     this.animation.translateY(0).step();
-    this.animationBg.opacity(0.5).step();    
+    this.animationBg.opacity(0.5).step();
     this.setData({
       animationModel: this.animation.export(),
       animationBg: this.animationBg.export()

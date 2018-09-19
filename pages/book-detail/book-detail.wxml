@@ -17,7 +17,7 @@
         <text class="lg_title">短评</text>
         <view class="main">
             <block wx:for="{{filter.limit(comments,10)}}" wx:for-item="comment" wx:key=" ">
-                <c-tag text="{{comment.content}}">
+                <c-tag text="{{comment.content}}" bind:tagLike="tagLikeTap">
                     <text class="fav_nums" slot="after">{{'+'+comment.nums}}</text>
                 </c-tag>
             </block>
@@ -39,7 +39,7 @@
     <view class="post-model model-pos" animation="{{animationModel}}">
         <view class="header">
             <text bind:tap="hidePostingTap">取消</text>
-            <text>确定</text>
+            <text bind:tap="postComments">确定</text>
         </view>
         <view class="content">
             <view class="wrapper">
