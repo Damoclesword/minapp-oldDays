@@ -34,17 +34,12 @@
         <image class="share" src="/images/icon/share.png" />
     </view>
 </view>
-<view class="post-model-container" hidden="{{!posting}}">
-    <view class="model-overlay {{overlayBg}}" animation="{{animationBg}}"></view>
-    <view class="post-model model-pos" animation="{{animationModel}}">
-        <view class="header">
-            <text bind:tap="hidePostingTap">取消</text>
-            <text bind:tap="postComments">确定</text>
-        </view>
-        <view class="content">
-            <view class="wrapper">
-                <input class="post" placeholder="请输入你的短评"></input>
-            </view>
-        </view>
+<c-model id="c-model" class="post-model">
+    <!-- <view class="header" slot="header"> -->
+        <text class="header-button" bind:tap="hidePostingTap" slot="header">取消</text>
+        <text class="header-button" bind:tap="postComments" slot="header">确定</text>
+    <!-- </view> -->
+    <view class="wrapper" slot="content">
+        <input class="post" placeholder="请输入你的短评"></input>
     </view>
-</view>
+</c-model>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "c-tag": "/components/tag/index",
-    "c-like": "/components/like/index"
+    "c-like": "/components/like/index",
+    "c-model": "/components/model/index"
   }
 }

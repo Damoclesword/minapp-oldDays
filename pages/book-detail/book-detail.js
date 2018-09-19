@@ -16,10 +16,7 @@ Page({
     book: null,
     comments: [],
     likeStatus: false,
-    likeCount: 0,
-    posting: false,
-    animationModel: {},
-    animationBg: {}
+    likeCount: 0
   },
 
   /**
@@ -37,14 +34,14 @@ Page({
   },
 
   /**
-   * 短评点赞函数(接口原因，暂时未实现)
+   * 短评点赞(接口原因，暂时未实现)
    */
   tagLikeTap: function (event) {
     console.log(event.detail);
   },
 
   /**
-   * 提交评论函数
+   * 提交评论
    */
   postComments: function (event) {
     this.triggerEvent('hidePostingTap');
@@ -54,77 +51,14 @@ Page({
    * 弹出短评编辑框
    */
   showPostingTap: function (event) {
-    let that = this;
-    //底部弹出动画    
-    let animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "ease",
-      delay: 0
-    });
-    //overlay透明度动画
-    let animationBg = wx.createAnimation({
-      duration: 500,
-      timingFunction: "ease",
-      delay: 0
-    });
-    this.setData({
-      posting: true,
-    });
-    this.animation = animation;
-    this.animationBg = animationBg;
-    setTimeout(function () {
-      that.fadeIn();
-    }, 200);
+    this.c_model.showModel();
   },
 
   /**
-   * 对应隐藏短评编辑框
+   * 隐藏短评编辑框
    */
   hidePostingTap: function (e) {
-    let that = this;
-    //底部弹出动画    
-    let animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "ease",
-      delay: 0
-    });
-    //overlay透明度动画
-    let animationBg = wx.createAnimation({
-      duration: 500,
-      timingFunction: "ease",
-      delay: 0
-    });
-    this.animation = animation;
-    that.fadeOut();
-    setTimeout(function () {
-      that.setData({
-        posting: false,
-      });
-    }, 300);
-  },
-
-  /**
-   * 淡入动画
-   */
-  fadeIn: function () {
-    this.animation.translateY(0).step();
-    this.animationBg.opacity(0.5).step();
-    this.setData({
-      animationModel: this.animation.export(),
-      animationBg: this.animationBg.export()
-    });
-  },
-
-  /**
-   * 淡出动画
-   */
-  fadeOut: function () {
-    this.animation.translateY("100%").step();
-    this.animationBg.opacity(0).step();
-    this.setData({
-      animationModel: this.animation.export(),
-      animationBg: this.animationBg.export()
-    });
+    this.c_model.hideModel();
   },
 
   /**
@@ -159,7 +93,9 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    this.c_model = this.selectComponent('#c-model');
+  },
 
   /**
    * 生命周期函数--监听页面显示

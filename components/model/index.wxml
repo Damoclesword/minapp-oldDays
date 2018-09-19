@@ -1,0 +1,11 @@
+<view class="post-model-container" wx:if="{{isShow}}">
+    <view class="model-overlay" animation="{{animationBg}}" catchtouchmove="_preventTouchMove"></view>
+    <view class="post-model model-pos" animation="{{animationModel}}" catchtouchmove="_preventTouchMove">
+        <view class="header">
+            <slot name="header"></slot>
+        </view>
+        <view class="content">
+            <slot name="content"></slot>
+        </view>
+    </view>
+</view>
