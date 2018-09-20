@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookDatas: null
+    bookDatas: null,
+    searching: false
   },
 
   /**
@@ -24,13 +25,31 @@ Page({
   },
 
   /**
-   * 监听Book点击事件并跳转到Book详情
+   * 监听book组件点击事件并跳转到book详情
    */
   onBookDetailTap: function (event) {
     const bid = event.detail.bid;
     wx.navigateTo({
       url: `/pages/book-detail/book-detail?bid=${bid}`,
     })
+  },
+
+  /**
+   * 监听search框点击事件
+   */
+  onSearchTap: function (event) {
+    this.setData({
+      searching: true
+    });
+  },
+
+  /**
+   * 监听search框消失
+   */
+  onSearchCancel: function(event) {
+    this.setData({
+      searching: false
+    });
   },
 
   /**

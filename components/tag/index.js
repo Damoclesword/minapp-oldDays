@@ -9,7 +9,11 @@ Component({
   properties: {
     text: {
       type: String
-    }
+    },
+    shape: {
+      type: Number,
+      value: 0
+    } //0:半圆角 1:圆角长方形 
   },
 
   /**
@@ -23,8 +27,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap: function(e) {
-      this.triggerEvent('tagLike',{
+    onTap: function (e) {
+      this.triggerEvent('tagLike', {
         text: this.properties.text
       });
     }

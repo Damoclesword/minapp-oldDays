@@ -1,6 +1,6 @@
-<view class="container">
+<view class="container" wx:if="{{!searching}}">
     <view class="header">
-        <view class="search_box">
+        <view class="search_box" bind:tap="onSearchTap">
             <image class="icon" src="/images/icon/search.png" />
             <text>搜索图书名称</text>
         </view>
@@ -16,3 +16,5 @@
         </view>
     </view>
 </view>
+
+<c-search wx:if="{{searching}}" bind:search-cancel="onSearchCancel"></c-search>

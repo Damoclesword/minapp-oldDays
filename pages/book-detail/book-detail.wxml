@@ -40,6 +40,6 @@
     <text class="header-button" bind:tap="postComments" slot="header">确定</text>
     <!-- </view> -->
     <view class="wrapper" slot="content">
-        <input bindconfirm="postComments" bindinput="getCommentInput" maxlength="12" cursor-spacing="10" class="post" placeholder="请输入你的短评"  value="{{commentInput}}"></input>
+        <input bindconfirm="postComments" bindinput="getCommentInput" cursor-spacing="10" class="post" placeholder="请输入你的短评"  value="{{commentInput}}"></input>
     </view>
 </c-model>

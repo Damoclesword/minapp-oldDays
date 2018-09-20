@@ -1,4 +1,19 @@
-<view class="container" bind:tap="onTap">
+<view class="container {{tag.changeShape(shape)}}" bind:tap="onTap">
+    <slot name="before"></slot>
     <text>{{text}}</text>
     <slot name="after"></slot>
 </view>
+
+<wxs module="tag">
+    //改变tag的形状
+    function changeShape(shape) {
+        if(shape === 0)
+            return "shape-circle";
+        if(shape === 1)
+            return "shape-rectangle";
+    }
+
+    module.exports = {
+        changeShape: changeShape
+    }
+</wxs>

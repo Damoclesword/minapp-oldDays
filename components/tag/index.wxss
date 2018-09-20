@@ -5,7 +5,14 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-radius: 44rpx;
     font-size: 28rpx;
     color: #484748;
+}
+
+.shape-circle {
+    border-radius: 44rpx;
+}
+
+.shape-rectangle {
+    border-radius: 4rpx;
 }

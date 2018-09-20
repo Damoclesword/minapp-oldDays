@@ -117,29 +117,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: "数据加载中"
+    });
     const bid = options.bid;
     const detail = bookModel.getDetail(bid);
     const comments = bookModel.getComments(bid);
     const like = bookModel.getLikeStatus(bid);
 
-    detail.then(res => {
+    //promise.all()封装了三个promise并实现fulfilled状态的统一回调函数
+    Promise.all([detail, comments, like]).then(([book, comments, like]) => {
       this.setData({
-        book: res
+        book,
+        comments: comments.comments,
+        likeStatus: like.like_status,
+        likeCount: like.fav_nums
       });
-    });
-
-    comments.then(res => {
-      this.setData({
-        comments: res.comments
-      });
-    });
-
-    like.then(res => {
-      this.setData({
-        likeStatus: res.like_status,
-        likeCount: res.fav_nums
-      });
-    });
+      wx.hideLoading();
+    })
   },
 
   /**
