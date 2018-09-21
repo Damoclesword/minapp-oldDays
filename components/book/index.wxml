@@ -17,34 +17,8 @@
         <text class="type">图书</text>
         <text class="title">{{bookData.title}}</text>
         <view class="detail">
-            <!-- <block wx:key="*this" wx:for="{{bookData.author}}" wx:for-item="author">{{author}}</block> / {{bookData.pubdate}} / {{bookData.publisher}} -->
-            {{bookComponent.makeString(bookData)}}
+            {{util.makeString(bookData)}}
        </view>
     </view>
 </view>
-
-<wxs module="bookComponent">
-    function makeString(data) {
-        var str = "";
-        if(data.author) {
-            for(var i = 0; i < data.author.length; ++i) {
-                str+= (data.author[i]+" ");
-            }
-        }
-
-        if(data.pubdate) {
-            str+= "/ ";
-            str+= data.pubdate;
-        }
-
-        if(data.publisher) {
-            str+= " / ";
-            str+= data.publisher
-        }
-        return str;
-    }
-
-    module.exports = {
-        makeString: makeString
-    }
-</wxs>
+<wxs module="util" src="../../util/filter.wxs"></wxs>

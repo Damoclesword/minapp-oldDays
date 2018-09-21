@@ -1,22 +1,21 @@
-<wxs src="../../util/filter.wxs" module="filter"></wxs>
 <view class="container">
     <view class="header">
         <image src="{{book.image}}" />
         <view class="main">
             <text class="title">{{book.title}}</text>
-            <text class="infomation">
-                <block wx:key="*this" wx:for="{{book.author}}" wx:for-item="author">{{author}}</block> 著 / {{book.publisher}} / {{book.pubdate}}
-            </text>
+            <view class="detail">
+                {{util.makeString(book)}}
+            </view>
         </view>
     </view>
     <view class="summary">
         <text class="lg_title">简介</text>
-        <text class="main" decode="{{true}}">{{filter.format(book.summary)}}</text>
+        <text class="main" decode="{{true}}">{{util.format(book.summary)}}</text>
     </view>
     <view class="comments">
         <text class="lg_title">短评</text>
         <view class="main">
-            <block wx:for="{{filter.limit(comments,10)}}" wx:for-item="comment" wx:key=" ">
+            <block wx:for="{{util.limit(comments,10)}}" wx:for-item="comment" wx:key=" ">
                 <c-tag text="{{comment.content}}" bind:tagLike="tagLikeTap">
                     <text class="fav_nums" slot="after">{{'+'+comment.nums}}</text>
                 </c-tag>
@@ -43,3 +42,4 @@
         <input bindconfirm="postComments" bindinput="getCommentInput" cursor-spacing="10" class="post" placeholder="请输入你的短评"  value="{{commentInput}}"></input>
     </view>
 </c-model>
+<wxs src="../../util/filter.wxs" module="util"></wxs>

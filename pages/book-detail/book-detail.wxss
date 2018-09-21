@@ -33,7 +33,7 @@
   font-weight: 600;
 }
 
-.main>.infomation {
+.main>.detail {
   font-size: 24rpx;
   margin-top: 16rpx;
 }

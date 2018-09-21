@@ -51,7 +51,7 @@ Component({
 
       book.search(0, 0, q)
         .then(res => {
-          console.log(res.books)
+          // console.log(res.books)
           this.setData({
             resultData: res.books
           });

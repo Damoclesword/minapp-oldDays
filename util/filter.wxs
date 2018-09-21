@@ -1,5 +1,5 @@
 /**
- * filter.wxs 工具集
+ * filter.wxs
  */
 
 /**
@@ -22,7 +22,32 @@ var limit = function(array, length) {
   return array.slice(0, length);
 };
 
+/**
+ * 输出书籍详细信息
+ * @param data 
+ */
+var makeString = function(data) {
+  var str = "";
+  if(data.author) {
+      for(var i = 0; i < data.author.length; ++i) {
+          str+= (data.author[i]+" ");
+      }
+  }
+
+  if(data.pubdate) {
+      str+= "/ ";
+      str+= data.pubdate;
+  }
+
+  if(data.publisher) {
+      str+= " / ";
+      str+= data.publisher
+  }
+  return str;
+}
+
 module.exports = {
   format: format,
-  limit: limit
+  limit: limit,
+  makeString: makeString
 };
