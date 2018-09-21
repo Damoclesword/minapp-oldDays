@@ -53,11 +53,6 @@
     margin-right: 10rpx;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-    margin-top: 106rpx;
-}
 
 .content .history,
 .content .hot {
@@ -82,4 +77,17 @@
     width: 40rpx;
     height: 40rpx;
     margin-left: -8rpx;
+}
+
+
+.content,
+.result {
+    display: flex;
+    flex-direction: column;
+    margin: 106rpx 30rpx 0;
+}
+
+.result .r-list {
+    padding: 30rpx 0;
+    border-bottom: 1px solid #ebebeb;
 }

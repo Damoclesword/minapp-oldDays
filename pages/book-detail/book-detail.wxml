@@ -5,7 +5,7 @@
         <view class="main">
             <text class="title">{{book.title}}</text>
             <text class="infomation">
-                <block wx:key="*this" wx:for="{{book.author}}" wx:for-item="author">{{author}}</block>著 / {{book.publisher}} / {{book.pubdate}}
+                <block wx:key="*this" wx:for="{{book.author}}" wx:for-item="author">{{author}}</block> 著 / {{book.publisher}} / {{book.pubdate}}
             </text>
         </view>
     </view>

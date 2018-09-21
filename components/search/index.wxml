@@ -8,7 +8,7 @@
         <text class="search-cancel" bind:tap="onCancel">取消</text>
     </view>
 
-    <view class="content">
+    <view class="content" wx:if="{{false}}">
         <view class="history">
             <text class="title">搜索历史</text>
             <view class="body">
@@ -26,6 +26,12 @@
                     </c-tag>
                 </block>
             </view>
+        </view>
+    </view>
+
+    <view class="result">
+        <view class="r-list" wx:for="{{resultData}}" wx:for-item="book" wx:key="id">
+            <c-book bookData="{{book}}" showType="{{1}}"></c-book>
         </view>
     </view>
 </view>

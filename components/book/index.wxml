@@ -1,5 +1,5 @@
-<view bind:tap="onTap" class="container">
-    <image class="book_image" src="{{bookData.image}}" />  
+<view bind:tap="onTap" class="box-container" wx:if="{{showType === 0}}">
+    <image class="image" src="{{bookData.image}}" />
     <view class="description">
         <text class="title">{{bookData.title}}</text>
         <text class="author">{{bookData.author}}</text>
@@ -10,3 +10,41 @@
         </view>
     </view>
 </view>
+
+<view bind:tap="onTap" class="list-container" wx:if="{{showType === 1}}">
+    <image class="image" src="{{bookData.image}}" />
+    <view class="description">
+        <text class="type">图书</text>
+        <text class="title">{{bookData.title}}</text>
+        <view class="detail">
+            <!-- <block wx:key="*this" wx:for="{{bookData.author}}" wx:for-item="author">{{author}}</block> / {{bookData.pubdate}} / {{bookData.publisher}} -->
+            {{bookComponent.makeString(bookData)}}
+       </view>
+    </view>
+</view>
+
+<wxs module="bookComponent">
+    function makeString(data) {
+        var str = "";
+        if(data.author) {
+            for(var i = 0; i < data.author.length; ++i) {
+                str+= (data.author[i]+" ");
+            }
+        }
+
+        if(data.pubdate) {
+            str+= "/ ";
+            str+= data.pubdate;
+        }
+
+        if(data.publisher) {
+            str+= " / ";
+            str+= data.publisher
+        }
+        return str;
+    }
+
+    module.exports = {
+        makeString: makeString
+    }
+</wxs>

@@ -1,4 +1,5 @@
-.container {
+/* box type book */
+.box-container {
     width: 240rpx;
     height: 360rpx;
     display: flex;
@@ -7,13 +8,13 @@
     box-shadow: 2px 3px 5px #f0f0f0;
 }
 
-.book_image {
+.box-container .image {
     width: 100%;
     height: 100%;
     border-radius: 2px;
 }
 
-.description {
+.box-container .description {
     width: 216rpx;
     position: absolute;
     bottom: 0;
@@ -26,14 +27,14 @@
     border-bottom-right-radius: 2px;
 }
 
-.title {
+.box-container .title {
     margin-top: 10rpx;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.author {
+.box-container .author {
     font-size: 20rpx;
     color: #999999;
     margin-bottom: 15rpx;
@@ -42,9 +43,48 @@
     overflow: hidden;
 }
 
-.footer {
+.box-container .footer {
     margin: 10rpx 10rpx;
     font-size: 20rpx;
     color: #666666;
     text-align: right;
+}
+
+/* list type book */
+.list-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-container .image {
+    width: 100rpx;
+    height: 150rpx;
+    border-radius: 4rpx;
+}
+
+.list-container .description {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+    font-weight: 500;
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.list-container .type {
+    
+}
+
+.list-container .title {
+    margin: 6rpx 0;
+    font-weight: 600;
+    color: #66ba61;
+    font-size: 30rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.list-container .detail {
+   
 }

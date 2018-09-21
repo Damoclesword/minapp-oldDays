@@ -1,4 +1,9 @@
+@font-face {
+    font-family: 'olddays-light';
+    src: local('PingFangSC-Light'), local('HiraginoSansGB-W3');
+}
+
 page {
-    font-family: "PingFangSC-Thin";   
-    font-size: 32rpx; 
-} 
+    font-family: "olddays-light", sans-serif;
+    font-size: 32rpx;
+}

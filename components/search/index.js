@@ -2,7 +2,11 @@
 import {
   KeywordModel
 } from '../../models/keyword'
+import {
+  BookModel
+} from "../../models/book"
 const keyword = new KeywordModel();
+const book = new BookModel();
 Component({
   /**
    * 组件的属性列表
@@ -17,6 +21,7 @@ Component({
   data: {
     histories: [],
     hot: [],
+    resultData: [],
     inputValue: null
   },
 
@@ -42,7 +47,16 @@ Component({
     },
 
     searchConfirm: function (event) {
-      keyword.addToHistory(event.detail.value);
+      const q = event.detail.value;
+
+      book.search(0, 0, q)
+        .then(res => {
+          console.log(res.books)
+          this.setData({
+            resultData: res.books
+          });
+          keyword.addToHistory(q);
+        })
     }
   }
 })

@@ -9,6 +9,10 @@ Component({
       observer: function (newVal, oldVal) {
         // console.log(newVal);
       }
+    },
+    showType: {   //0:box样式  1:list条形样式
+      type: Number,
+      value: 0
     }
   },
 

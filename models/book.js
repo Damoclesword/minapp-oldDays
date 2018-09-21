@@ -11,6 +11,22 @@ class BookModel extends HTTP {
             url: "/book/hot_list",
         });
     }
+    /**
+     * 书籍搜索
+     * @param {开始记录数 默认为0} start 
+     * @param {0为完整内容，1为简介，默认0} summary 
+     * @param {搜索内容} q 
+     */
+    search(start, summary, q) {
+        return this.request({
+            url: "/book/search",
+            data: {
+                start,
+                summary,
+                q
+            }
+        })
+    }
 
     /**
      * 获取图书详情
@@ -41,8 +57,8 @@ class BookModel extends HTTP {
             url: `/book/${bid}/favor`
         });
     }
-    
-    postComments(bid, content){
+
+    postComments(bid, content) {
         return this.request({
             url: `/book/add/short_comment`,
             data: {
