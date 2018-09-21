@@ -1,19 +1,20 @@
 <view class="container">
     <view class="header">
         <view class="search-wrapper">
-            <image class="icon" src="/images/icon/search.png" />
-            <input class="input-main" bind:confirm="searchConfirm" placeholder="寻找契合灵魂的那本书" placeholder-class="input-placeholder"
+            <image class="before-icon" src="/images/icon/search.png" />
+            <input class="input-main" value="{{inputValue}}" bindconfirm="searchConfirm" bindinput="inputConfirm" placeholder="寻找契合灵魂的那本书" placeholder-class="input-placeholder"
                 auto-focus="true" />
+            <image bind:tap="onDelete" class="after-icon" src="/images/icon/delete@search.png" hidden="{{inputValue == ''}}"/>
         </view>
         <text class="search-cancel" bind:tap="onCancel">取消</text>
     </view>
 
-    <view class="content" wx:if="{{false}}">
+    <view class="content" wx:if="{{!searched}}">
         <view class="history">
             <text class="title">搜索历史</text>
             <view class="body">
                 <block wx:for="{{histories}}" wx:for-item="history" wx:key="*this">
-                    <c-tag class="history_tag" shape="{{1}}" text="{{history}}"></c-tag>
+                    <c-tag bind:tag-tap="searchConfirm" class="history_tag" shape="{{1}}" text="{{history}}"></c-tag>
                 </block>
             </view>
         </view>
@@ -21,7 +22,7 @@
             <text class="title">热门搜索</text>
             <view class="body">
                 <block wx:for="{{hot}}" wx:key="*this">
-                    <c-tag class="hot_tag" shape="{{1}}" text="{{item}}">
+                    <c-tag bind:tag-tap="searchConfirm" class="hot_tag" shape="{{1}}" text="{{item}}">
                         <image slot="before" src="/images/icon/hot.png" class="before_icon" wx:if="{{index <= 2}}"></image>
                     </c-tag>
                 </block>
@@ -29,7 +30,7 @@
         </view>
     </view>
 
-    <view class="result">
+    <view class="result" wx:if="{{searched}}">
         <view class="r-list" wx:for="{{resultData}}" wx:for-item="book" wx:key="id">
             <c-book bookData="{{book}}" showType="{{1}}"></c-book>
         </view>

@@ -22,10 +22,12 @@ Component({
     histories: [],
     hot: [],
     resultData: [],
-    inputValue: null
+    inputValue: "",
+    searched: false
   },
 
   attached: function () {
+    console.log("search attached");
     let histories = keyword.getHistory();
     this.setData({
       histories
@@ -42,13 +44,28 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //关闭搜索面板
     onCancel: function () {
       this.triggerEvent("search-cancel", {});
     },
 
-    searchConfirm: function (event) {
-      const q = event.detail.value;
+    //清除搜索
+    onDelete: function () {
+      this.setData({
+        inputValue: "",
+        searched: false
+      });
+    },
 
+    //确认搜索
+    searchConfirm: function (event) {
+      this.setData({
+        searched: true
+      });
+      const q = event.detail.value || event.detail.text;   //从输入框或者点击获取搜索内容
+      this.setData({
+        inputValue: q
+      });
       book.search(0, 0, q)
         .then(res => {
           // console.log(res.books)
@@ -57,6 +74,13 @@ Component({
           });
           keyword.addToHistory(q);
         })
+    },
+
+    //监听搜索框有文字输入
+    inputConfirm: function(event) {
+      this.setData({
+        inputValue: event.detail.value
+      })
     }
   }
 })

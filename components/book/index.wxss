@@ -60,6 +60,7 @@
     width: 100rpx;
     height: 150rpx;
     border-radius: 4rpx;
+    flex-shrink: 0;
 }
 
 .list-container .description {
@@ -69,10 +70,7 @@
     font-weight: 500;
     color: #999999;
     font-size: 24rpx;
-}
-
-.list-container .type {
-    
+    flex-wrap: wrap;
 }
 
 .list-container .title {
@@ -80,11 +78,4 @@
     font-weight: 600;
     color: #66ba61;
     font-size: 30rpx;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.list-container .detail {
-   
 }

@@ -28,7 +28,7 @@ Component({
    */
   methods: {
     onTap: function (e) {
-      this.triggerEvent('tagLike', {
+      this.triggerEvent('tag-tap', {
         text: this.properties.text
       });
     }

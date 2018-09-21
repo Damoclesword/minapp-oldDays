@@ -31,13 +31,20 @@ class KeywordModel extends HTTP {
         if (!words) {
             words = [];
         }
+        console.log("word: " + keyword)
         if (!words.includes(keyword)) {
             if (words.length >= this.max_history) {
                 words.pop();
             }
             words.unshift(keyword);
-            wx.setStorageSync(this.key, words);
+        } else {
+            let index = words.findIndex(function (val) {
+                return val === keyword;
+            });
+            words.splice(index, 1);
+            words.unshift(keyword);
         }
+        wx.setStorageSync(this.key, words);
     }
 }
 

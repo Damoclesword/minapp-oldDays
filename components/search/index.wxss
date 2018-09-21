@@ -31,6 +31,7 @@
 }
 
 .input-main {
+    width: 100%;
     color: #000;
     font-weight: 400;
 }
@@ -47,12 +48,19 @@
     color: #66ba61;
 }
 
-.icon {
+.search-wrapper .before-icon {
     width: 28rpx;
     height: 28rpx;
     margin-right: 10rpx;
+    flex-shrink: 0;
 }
 
+.search-wrapper .after-icon {
+    width: 28rpx;
+    height: 28rpx;
+    padding: 10rpx;
+    flex-shrink: 0;
+}
 
 .content .history,
 .content .hot {
