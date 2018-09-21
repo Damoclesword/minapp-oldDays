@@ -17,4 +17,4 @@
     </view>
 </view>
 
-<c-search wx:if="{{searching}}" bind:search-cancel="onSearchCancel"></c-search>
+<c-search wx:if="{{searching}}" bind:search-cancel="onSearchCancel" more="{{more}}"></c-search>

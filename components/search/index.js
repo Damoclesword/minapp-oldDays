@@ -5,14 +5,42 @@ import {
 import {
   BookModel
 } from "../../models/book"
+import {
+  paginationBeh
+} from "../behaviors/pagination.js"
 const keyword = new KeywordModel();
 const book = new BookModel();
 Component({
   /**
+   * 导入behavior组件
+   */
+  behaviors: [paginationBeh],
+  /**
    * 组件的属性列表
    */
   properties: {
+    more: {
+      type: String,
+      observer: function (newVal, oldVal) {
+        if (!this.data.inputValue)
+          return;
 
+        if (!this._isLocked()) {
+          if (!this.hasMoreData()) {
+            return;
+          }
+          this._setLock();
+          book.search(this.getCurrentStart(),
+              0, this.data.inputValue)
+            .then(res => {
+              this.setMoreData(res.books);
+              this._setUnlock();
+            }, error => {
+              this._setUnlock();
+            });
+        }
+      }
+    }
   },
 
   /**
@@ -21,13 +49,13 @@ Component({
   data: {
     histories: [],
     hot: [],
-    resultData: [],
     inputValue: "",
-    searched: false
+    searched: false, //是否打开搜索面板
+    loading: false //锁，用于防止无限加载多次请求 节流
   },
 
   attached: function () {
-    console.log("search attached");
+    //attached中加载历史搜索和热搜
     let histories = keyword.getHistory();
     this.setData({
       histories
@@ -53,25 +81,22 @@ Component({
     onDelete: function () {
       this.setData({
         inputValue: "",
-        searched: false
       });
+      this._clearSearchResult();
+      this._closeSearchResult();
     },
 
     //确认搜索
     searchConfirm: function (event) {
-      this.setData({
-        searched: true
-      });
+      this._showSearchResult();
       const q = event.detail.value || event.detail.text; //从输入框或者点击获取搜索内容
       this.setData({
         inputValue: q
       });
       book.search(0, 0, q)
         .then(res => {
-          // console.log(res.books)
-          this.setData({
-            resultData: res.books
-          });
+          this.setMoreData(res.books);
+          this.setTotal(res.total);
           keyword.addToHistory(q);
         })
     },
@@ -89,6 +114,42 @@ Component({
       wx.navigateTo({
         url: `/pages/book-detail/book-detail?bid=${bid}`,
       });
+    },
+
+    _showSearchResult: function () {
+      this.setData({
+        searched: true
+      })
+    },
+
+    _closeSearchResult: function () {
+      this.setData({
+        searched: false
+      })
+    },
+
+    //清空搜索数据
+    _clearSearchResult: function () {
+      this.setData({
+        resultData: []
+      })
+    },
+
+    //判断是否上锁
+    _isLocked: function () {
+      return this.data.loading;
+    },
+
+    _setLock: function () {
+      this.setData({
+        loading: true
+      })
+    },
+
+    _setUnlock: function () {
+      this.setData({
+        loading: false
+      })
     }
   }
 })

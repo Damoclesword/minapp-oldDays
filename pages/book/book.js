@@ -2,6 +2,9 @@
 import {
   BookModel
 } from '../../models/book';
+import {
+  randomString
+} from '../../util/common';
 const book = new BookModel();
 
 Page({
@@ -10,7 +13,8 @@ Page({
    */
   data: {
     bookDatas: null,
-    searching: false
+    searching: false,
+    more: ""
   },
 
   /**
@@ -46,7 +50,7 @@ Page({
   /**
    * 监听search框消失
    */
-  onSearchCancel: function(event) {
+  onSearchCancel: function (event) {
     this.setData({
       searching: false
     });
@@ -80,7 +84,12 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {},
+  onReachBottom: function () {
+    const randomStr = randomString(false, 32);
+    this.setData({
+      more: randomStr
+    })
+  },
 
   /**
    * 用户点击右上角分享
