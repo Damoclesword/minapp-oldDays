@@ -31,7 +31,6 @@ class KeywordModel extends HTTP {
         if (!words) {
             words = [];
         }
-        console.log("word: " + keyword)
         if (!words.includes(keyword)) {
             if (words.length >= this.max_history) {
                 words.pop();

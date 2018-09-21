@@ -62,7 +62,7 @@ Component({
       this.setData({
         searched: true
       });
-      const q = event.detail.value || event.detail.text;   //从输入框或者点击获取搜索内容
+      const q = event.detail.value || event.detail.text; //从输入框或者点击获取搜索内容
       this.setData({
         inputValue: q
       });
@@ -77,10 +77,18 @@ Component({
     },
 
     //监听搜索框有文字输入
-    inputConfirm: function(event) {
+    inputConfirm: function (event) {
       this.setData({
         inputValue: event.detail.value
       })
+    },
+
+    //book-detail事件
+    onBookDetailTap: function (event) {
+      const bid = event.detail.bid;
+      wx.navigateTo({
+        url: `/pages/book-detail/book-detail?bid=${bid}`,
+      });
     }
   }
 })
