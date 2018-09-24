@@ -33,7 +33,7 @@
     <view class="result" wx:if="{{searched}}">
         <c-loading id="c-loading"></c-loading>
         <view class="r-list" wx:for="{{resultData}}" wx:for-item="book" wx:key="id">
-            <c-book bind:book-detail="onBookDetailTap" bookData="{{book}}" showType="{{1}}"></c-book>
+            <c-book id="c-book" bind:book-detail="onBookDetailTap" bookData="{{book}}" showType="{{1}}"></c-book>
         </view>
     </view>
 </view>

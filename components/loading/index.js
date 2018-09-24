@@ -1,5 +1,6 @@
 // components/loading/index.js
 Component({
+  behaviors: ['wx://component-export'],
   /**
    * 组件的属性列表
    */

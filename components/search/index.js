@@ -55,7 +55,6 @@ Component({
   },
 
   attached: function () {
-    const loading = this.selectComponent("#c-loading");
     //attached中加载历史搜索和热搜
     let histories = keyword.getHistory();
     this.setData({
@@ -67,6 +66,10 @@ Component({
           hot: res.hot
         })
       });
+  },
+
+  ready: function () {
+    
   },
 
   /**
@@ -98,6 +101,7 @@ Component({
         .then(res => {
           //关闭loading动画
           this.loading.hideLoading();
+
           this.setMoreData(res.books);
           this.setTotal(res.total);
           keyword.addToHistory(q);
@@ -122,9 +126,11 @@ Component({
     _showSearchResult: function () {
       this.setData({
         searched: true
+      },()=>{
+        //selectComponent必须在wx:if="true"后调用
+        this.loading = this.selectComponent("#c-loading")
+        this.loading.showLoading()
       })
-      //加载loading动画
-      this.loading.showLoading();
     },
 
     _closeSearchResult: function () {
