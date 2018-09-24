@@ -92,6 +92,7 @@ Component({
 
     //确认搜索
     searchConfirm: function (event) {
+      this._clearSearchResult();
       this._showSearchResult();
       const q = event.detail.value || event.detail.text; //从输入框或者点击获取搜索内容
       this.setData({
@@ -112,6 +113,10 @@ Component({
     inputConfirm: function (event) {
       this.setData({
         inputValue: event.detail.value
+      },()=>{
+        if(!this.data.inputValue) {
+          this._closeSearchResult()
+        }
       })
     },
 
