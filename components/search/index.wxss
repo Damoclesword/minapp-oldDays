@@ -1,4 +1,5 @@
 .container {
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -90,6 +91,7 @@
 
 .content,
 .result {
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin: 106rpx 30rpx 0;
@@ -98,4 +100,19 @@
 .result .r-list {
     padding: 30rpx 0;
     border-bottom: 1px solid #ebebeb;
+}
+
+.result .r-none {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #989898;
+}
+
+.r-none image {
+    width: 256rpx;
+    height: 256rpx;
 }

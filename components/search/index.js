@@ -56,10 +56,7 @@ Component({
 
   attached: function () {
     //attached中加载历史搜索和热搜
-    let histories = keyword.getHistory();
-    this.setData({
-      histories
-    });
+    this._refreshHistory();
     keyword.getHot()
       .then(res => {
         this.setData({
@@ -69,7 +66,7 @@ Component({
   },
 
   ready: function () {
-    
+
   },
 
   /**
@@ -103,8 +100,8 @@ Component({
           //关闭loading动画
           this.loading.hideLoading();
 
-          this.setMoreData(res.books);
           this.setTotal(res.total);
+          this.setMoreData(res.books);
           keyword.addToHistory(q);
         })
     },
@@ -113,8 +110,8 @@ Component({
     inputConfirm: function (event) {
       this.setData({
         inputValue: event.detail.value
-      },()=>{
-        if(!this.data.inputValue) {
+      }, () => {
+        if (!this.data.inputValue) {
           this._closeSearchResult()
         }
       })
@@ -131,7 +128,7 @@ Component({
     _showSearchResult: function () {
       this.setData({
         searched: true
-      },()=>{
+      }, () => {
         //selectComponent必须在wx:if="true"后调用
         this.loading = this.selectComponent("#c-loading")
         this.loading.showLoading()
@@ -139,6 +136,8 @@ Component({
     },
 
     _closeSearchResult: function () {
+      //在搜索结果关闭后先刷新一次历史搜索记录
+      this._refreshHistory()
       this.setData({
         searched: false
       })
@@ -147,7 +146,8 @@ Component({
     //清空搜索数据
     _clearSearchResult: function () {
       this.setData({
-        resultData: []
+        resultData: [],
+        noneResult: false //包括重置noneResult标志
       })
     },
 
@@ -166,6 +166,14 @@ Component({
       this.setData({
         loading: false
       })
+    },
+
+    //刷新历史搜索
+    _refreshHistory: function () {
+      let histories = keyword.getHistory();
+      this.setData({
+        histories
+      });
     }
   }
 })

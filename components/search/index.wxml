@@ -35,5 +35,9 @@
         <view class="r-list" wx:for="{{resultData}}" wx:for-item="book" wx:key="id">
             <c-book id="c-book" bind:book-detail="onBookDetailTap" bookData="{{book}}" showType="{{1}}"></c-book>
         </view>
+        <view class="r-none" wx:if="{{noneResult}}">
+            <image src="./images/search@none.png" />
+            <text>暂无搜索结果</text>
+        </view>
     </view>
 </view>
