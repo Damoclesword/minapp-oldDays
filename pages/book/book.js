@@ -21,7 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loading = this.selectComponent("#c-loading");
+    this.loading.showLoading();
     book.getHotList().then(res => {
+      this.loading.hideLoading();
       this.setData({
         bookDatas: res
       });

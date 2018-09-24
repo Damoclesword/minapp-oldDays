@@ -1,6 +1,8 @@
 {
+    "backgroundColor": "#f9f9f9",
     "usingComponents": {
         "c-book": "/components/book/index",
-        "c-search": "/components/search/index"
+        "c-search": "/components/search/index",
+        "c-loading": "/components/loading/index"
     }
 }

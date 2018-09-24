@@ -55,6 +55,7 @@ Component({
   },
 
   attached: function () {
+    const loading = this.selectComponent("#c-loading");
     //attached中加载历史搜索和热搜
     let histories = keyword.getHistory();
     this.setData({
@@ -95,6 +96,8 @@ Component({
       });
       book.search(0, 0, q)
         .then(res => {
+          //关闭loading动画
+          this.loading.hideLoading();
           this.setMoreData(res.books);
           this.setTotal(res.total);
           keyword.addToHistory(q);
@@ -120,6 +123,8 @@ Component({
       this.setData({
         searched: true
       })
+      //加载loading动画
+      this.loading.showLoading();
     },
 
     _closeSearchResult: function () {

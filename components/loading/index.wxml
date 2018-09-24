@@ -1,2 +1,7 @@
-<!--components/loading/index.wxml-->
-<text>components/loading/index.wxml</text>
+<view class="container {{animationCss}}">
+    <view class="lds-facebook">
+        <view></view>
+        <view></view>
+        <view></view>
+    </view>
+</view>

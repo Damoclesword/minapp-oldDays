@@ -6,13 +6,16 @@
         </view>
     </view>
     <view class="sub_container">
-        <view class="category_title">
-            <text>推荐</text>
-        </view>
-        <view class="books_wrapper">
-            <block wx:key="id" wx:for="{{bookDatas}}" wx:for-item="bookData">
-                <c-book bind:book-detail="onBookDetailTap" class="book" bookData="{{bookData}}"></c-book>
-            </block>
+        <c-loading id="c-loading"></c-loading>
+        <view>
+            <view class="category_title">
+                <text>推荐</text>
+            </view>
+            <view class="books_wrapper">
+                <block wx:key="id" wx:for="{{bookDatas}}" wx:for-item="bookData">
+                    <c-book bind:book-detail="onBookDetailTap" class="book" bookData="{{bookData}}"></c-book>
+                </block>
+            </view>
         </view>
     </view>
 </view>
