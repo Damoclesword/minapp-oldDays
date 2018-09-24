@@ -30,6 +30,11 @@ const paginationBeh = Behavior({
                     noneResult: true
                 })
             }
+            else {
+                this.setData({
+                    noneResult: false
+                })
+            }
             this.data.total = total;
         }
     }
