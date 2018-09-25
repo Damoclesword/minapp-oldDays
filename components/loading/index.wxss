@@ -6,7 +6,7 @@
     /* -webkit-transform: translateY(-100%);
     transform: translateY(-100%); */
     margin-top: -40px;
-    transition: margin-top height 0.15s ease-out;
+    transition: margin-top 0.25s ease-out;
 }
 
 .slide-in {

@@ -24,9 +24,10 @@ Page({
     this.loading = this.selectComponent("#c-loading");
     this.loading.showLoading();
     book.getHotList().then(res => {
-      this.loading.hideLoading();
       this.setData({
         bookDatas: res
+      }, () => {
+        this.loading.hideLoading();
       });
     });
   },

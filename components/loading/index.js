@@ -33,23 +33,7 @@ Component({
         that.setData({
           animationCss: ""
         })
-      }, 800);
-    },
-
-    //模拟下拉动画 
-    _slideInDown: function () {
-      this.animation.translateY(0).step();
-      this.setData({
-        animationLoading: this.animation.export(),
-      });
-    },
-
-    //模拟下拉动画结束
-    _slideOutUp: function () {
-      this.animation.translateY("-100%").height(0).step();
-      this.setData({
-        animationLoading: this.animation.export(),
-      });
+      }, 300);
     }
   }
 })
