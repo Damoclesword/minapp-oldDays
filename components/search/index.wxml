@@ -3,7 +3,7 @@
         <view class="search-wrapper">
             <image class="before-icon" src="/images/icon/search.png" />
             <input class="input-main" value="{{inputValue}}" bindconfirm="searchConfirm" bindinput="inputConfirm" placeholder="寻找契合灵魂的那本书" placeholder-class="input-placeholder"
-                auto-focus="true" />
+                focus="true" />
             <image bind:tap="onDelete" class="after-icon" src="/images/icon/delete@search.png" hidden="{{inputValue == ''}}"/>
         </view>
         <text class="search-cancel" bind:tap="onCancel">取消</text>
