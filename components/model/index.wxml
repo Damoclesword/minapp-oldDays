@@ -1,6 +1,6 @@
-<view class="post-model-container" wx:if="{{isShow}}">
-    <view class="model-overlay" animation="{{animationBg}}" catchtouchmove="_preventTouchMove"></view>
-    <view class="post-model model-pos" animation="{{animationModel}}" catchtouchmove="_preventTouchMove">
+<view class="post-model-container" wx:if="{{showContainer}}">
+    <view class="model-overlay {{showModel ? 'model-overlay-visible' : ''}}" catchtouchmove="_preventTouchMove"></view>
+    <view class="post-model {{showModel ? 'post-model-visible' : ''}}" catchtouchmove="_preventTouchMove">
         <view class="header">
             <slot name="header"></slot>
         </view>
