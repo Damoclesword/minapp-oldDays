@@ -25,18 +25,18 @@ Component({
         if (!this.data.inputValue)
           return;
 
-        if (!this._isLocked()) {
+        if (!this.isLocked()) {
           if (!this.hasMoreData()) {
             return;
           }
-          this._setLock();
+          this.setLock();
           book.search(this.getCurrentStart(),
               0, this.data.inputValue)
             .then(res => {
               this.setMoreData(res.books);
-              this._setUnlock();
+              this.setUnlock();
             }, error => {
-              this._setUnlock();
+              this.setUnlock();
             });
         }
       }
@@ -51,7 +51,6 @@ Component({
     hot: [],
     inputValue: "",
     searched: false, //是否打开搜索面板
-    loading: false //锁，用于防止无限加载多次请求 节流
   },
 
   attached: function () {
@@ -148,23 +147,6 @@ Component({
       this.setData({
         resultData: [],
         noneResult: false //包括重置noneResult标志
-      })
-    },
-
-    //判断是否上锁
-    _isLocked: function () {
-      return this.data.loading;
-    },
-
-    _setLock: function () {
-      this.setData({
-        loading: true
-      })
-    },
-
-    _setUnlock: function () {
-      this.setData({
-        loading: false
       })
     },
 
