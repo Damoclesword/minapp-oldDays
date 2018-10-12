@@ -1,15 +1,17 @@
-// pages/my/my.js
+import { BookModel } from "../../models/book"
+const bookModel = new BookModel()
+
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     isAuthorized: false,
     userInfo: {},
+    favBookCount: 0
   },
 
-  onLoad: function() {
+  //此处不用onLoad是为了在收藏某书后该页面能实时更新收藏数据
+  onShow: function() {
     this.hasUserAuthorized()
+    this._getFavorBookCount()
   },
 
   //判断是否授权并自动更新信息
@@ -42,6 +44,15 @@ Page({
     this.setData({
       isAuthorized,
       userInfo,
+    })
+  },
+
+  //获取喜欢书籍数量
+  _getFavorBookCount() {
+    bookModel.getFavorBookCount().then(res => {
+      this.setData({
+        favBookCount: res.count
+      })
     })
   },
 })
