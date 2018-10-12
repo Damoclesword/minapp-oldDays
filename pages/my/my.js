@@ -3,45 +3,45 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    isAuthorized: false,
+    userInfo: {},
+  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {},
+  onShow: function() {
+    this.hasUserAuthorized()
+  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {},
+  //判断是否授权并自动更新信息
+  hasUserAuthorized: function() {
+    wx.getSetting({
+      success: data => {
+        if (data.authSetting["scope.userInfo"]) {
+          wx.getUserInfo({
+            success: res => {
+              this._setUserInfo(true, res.userInfo)
+            },
+          })
+        } else {
+          this._setUserInfo(false)
+        }
+      },
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {},
+  //用户第一次手动触发获取信息
+  onGetUserInfo(event) {
+    const userInfo = event.detail.userInfo
+    if (userInfo) {
+      this._setUserInfo(true, userInfo)
+    }
+  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {},
+  //设置用户是否授权与用户信息
+  _setUserInfo(isAuthorized = false, userInfo = {}) {
+    this.setData({
+      isAuthorized,
+      userInfo,
+    })
+  },
 })
