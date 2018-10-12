@@ -63,6 +63,7 @@
 }
 
 .user-info .avatar {
+  will-change: auto;
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
