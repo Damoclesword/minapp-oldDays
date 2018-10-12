@@ -8,7 +8,7 @@ Page({
     userInfo: {},
   },
 
-  onShow: function() {
+  onLoad: function() {
     this.hasUserAuthorized()
   },
 
