@@ -2,6 +2,7 @@
   "usingComponents": {
     "c-tag": "/components/tag/index",
     "c-like": "/components/like/index",
-    "c-model": "/components/model/index"
+    "c-model": "/components/model/index",
+    "c-image-button": "/components/image-button/index"
   }
 }
