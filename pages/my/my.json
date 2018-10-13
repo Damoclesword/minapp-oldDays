@@ -1,5 +1,7 @@
 {
-    "usingComponents": {
-        "c-loading": "/components/loading/index"
-    }
+  "usingComponents": {
+    "c-loading": "/components/loading/index",
+    "c-image-button": "/components/image-button/index",
+    "c-preview": "/components/preview/index"
+  }
 }

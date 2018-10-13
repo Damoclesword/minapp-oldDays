@@ -14,7 +14,7 @@
   flex-direction: row;
 }
 
-.header>image {
+.header > image {
   width: 200rpx;
   height: 300rpx;
   border-radius: 8rpx;
@@ -22,18 +22,18 @@
   flex-shrink: 0;
 }
 
-.header>.main {
+.header > .main {
   display: flex;
   flex-direction: column;
   padding: 0 40rpx;
 }
 
-.main>.title {
+.main > .title {
   font-size: 44rpx;
   font-weight: 600;
 }
 
-.main>.detail {
+.main > .detail {
   font-size: 24rpx;
   margin-top: 16rpx;
 }
@@ -44,7 +44,7 @@
   margin-top: 40rpx;
 }
 
-.summary>.main {
+.summary > .main {
   font-size: 30rpx;
   font-weight: 500;
   margin-top: 20rpx;
@@ -60,7 +60,7 @@
   margin-top: 20rpx;
 }
 
-.comments>.main {
+.comments > .main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -72,11 +72,11 @@
   margin-bottom: 16rpx;
 }
 
-.comments>.main>c-tag:nth-child(1)>view {
+.comments > .main > c-tag:nth-child(1) > view {
   background: #fefae0;
 }
 
-.comments>.main>c-tag:nth-child(2)>view {
+.comments > .main > c-tag:nth-child(2) > view {
   background: #f1fafe;
 }
 
@@ -112,7 +112,7 @@
   margin-left: 20rpx;
 }
 
-.post-container .wrapper>.post {
+.post-container .wrapper > .post {
   width: 24rpx;
   height: 24rpx;
   margin-right: 6rpx;
@@ -124,10 +124,14 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-right: 20rpx;
 }
 
 .post-container .actions .share {
+  padding: 0 30rpx 0 0;
+  margin-top: 14rpx;
+}
+
+.post-container .actions .icon-share {
   width: 40rpx;
   height: 40rpx;
 }
@@ -147,7 +151,7 @@
   border-radius: 62rpx;
 }
 
-.post-model .wrapper>.post {
+.post-model .wrapper > .post {
   margin-left: 30rpx;
   /* padding: 20rpx 0; */
 }

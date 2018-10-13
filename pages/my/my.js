@@ -1,66 +1,72 @@
-// pages/my/my.js
+import { BookModel } from "../../models/book"
+import { ClassicModel } from "../../models/classic"
+const bookModel = new BookModel()
+const classic = new ClassicModel()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    isAuthorized: false,
+    userInfo: {},
+    favBookCount: 0,
+    favClassicData: {},
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  //此处不用onLoad是为了在收藏某书后该页面能实时更新收藏数据
+  onShow: function() {
+    this.hasUserAuthorized()
+    this._getFavorBookCount()
+    this._getFavorClassicItems()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //判断是否授权并自动更新信息
+  hasUserAuthorized: function() {
+    wx.getSetting({
+      success: data => {
+        if (data.authSetting["scope.userInfo"]) {
+          wx.getUserInfo({
+            success: res => {
+              this._setUserInfo(true, res.userInfo)
+            },
+          })
+        } else {
+          this._setUserInfo(false)
+        }
+      },
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //用户第一次手动触发获取信息
+  onGetUserInfo(event) {
+    const userInfo = event.detail.userInfo
+    if (userInfo) {
+      this._setUserInfo(true, userInfo)
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //设置用户是否授权与用户信息
+  _setUserInfo(isAuthorized = false, userInfo = {}) {
+    this.setData({
+      isAuthorized,
+      userInfo,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //获取喜欢书籍数量
+  _getFavorBookCount() {
+    bookModel.getFavorBookCount().then(res => {
+      this.setData({
+        favBookCount: res.count,
+      })
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //获取用户收藏期刊信息
+  _getFavorClassicItems() {
+    classic.getFavorClassicItems().then(res => {
+      this.setData({
+        favClassicData: res,
+      })
+      console.log(res)
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

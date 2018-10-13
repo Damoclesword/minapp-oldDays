@@ -1,7 +1,12 @@
 <view class="classic-page-container">
     <view class="header-container">
         <c-episode index="{{classicData.index}}"></c-episode>
-        <c-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
+        <view class="actions">
+            <c-like class="like" bind:like="onLike" like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"></c-like>
+            <c-image-button class="share" open-type="share">
+                <image class="icon-share" slot="icon" src="/images/icon/share.png" />
+            </c-image-button>
+        </view>
     </view>
     <c-moive hidden="{{classicData.type != 100}}" imgSrc="{{classicData.image}}" content="{{classicData.content}}"></c-moive>
     <c-music hidden="{{classicData.type != 200}}" url="{{classicData.url}}" title="{{classicData.title}}" imgSrc="{{classicData.image}}" content="{{classicData.content}}"></c-music>

@@ -3,9 +3,7 @@
         <image src="{{book.image}}" />
         <view class="main">
             <text class="title">{{book.title}}</text>
-            <view class="detail">
-                {{util.makeString(book)}}
-            </view>
+            <view class="detail">{{util.makeString(book)}}</view>
         </view>
     </view>
     <view class="summary">
@@ -30,7 +28,10 @@
     </view>
     <view class="actions">
         <c-like bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></c-like>
-        <image class="share" src="/images/icon/share.png" />
+        <!-- <image class="share" src="/images/icon/share.png" /> -->
+        <c-image-button class="share" open-type="share">
+            <image class="icon-share" slot="icon" src="/images/icon/share.png" />
+        </c-image-button>
     </view>
 </view>
 <c-model id="c-model" class="post-model">
@@ -39,7 +40,7 @@
     <text class="header-button" bind:tap="postComments" slot="header">确定</text>
     <!-- </view> -->
     <view class="wrapper" slot="content">
-        <input bindconfirm="postComments" bindinput="getCommentInput" cursor-spacing="10" class="post" placeholder="请输入你的短评"  value="{{commentInput}}"></input>
+        <input bindconfirm="postComments" bindinput="getCommentInput" cursor-spacing="10" class="post" placeholder="请输入你的短评" value="{{commentInput}}"></input>
     </view>
 </c-model>
 <wxs src="../../util/filter.wxs" module="util"></wxs>

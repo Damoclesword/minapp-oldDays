@@ -2,7 +2,8 @@ const paginationBeh = Behavior({
     data: {
         resultData: [],
         total: 0,
-        noneResult: false
+        noneResult: false,
+        loading: false //锁，用于防止无限加载多次请求 节流
     },
 
     methods: {
@@ -25,17 +26,35 @@ const paginationBeh = Behavior({
         },
 
         setTotal(total) {
-            if(total === 0){
+            if (total === 0) {
                 this.setData({
                     noneResult: true
                 })
-            }
-            else {
+            } else {
                 this.setData({
                     noneResult: false
                 })
             }
             this.data.total = total;
+        },
+
+        //判断是否上锁
+        isLocked: function () {
+            return this.data.loading;
+        },
+        
+        //上锁
+        setLock: function () {
+            this.setData({
+                loading: true
+            })
+        },
+
+        //解锁
+        setUnlock: function () {
+            this.setData({
+                loading: false
+            })
         }
     }
 });
