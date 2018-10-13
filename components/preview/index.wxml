@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="header">
+        <view class="tag">{{typeText}}</view>
+        <c-like class="like" like="{{previewData.like_status}}" count="{{previewData.fav_nums}}" readOnly="{{true}}"></c-like>
+    </view>
+    <view class="body" wx:if="{{previewData.type === 100 || previewData.type === 300}}">
+        <image class="b-image" src="{{previewData.image}}" />
+        <text class="content">{{previewData.content}}</text>
+    </view>
+    <view class="body" wx:if="{{previewData.type === 200}}">
+        <image class="music-image" src="{{previewData.image}}" />
+        <text class="content">{{previewData.content}}</text>
+    </view>
+</view>

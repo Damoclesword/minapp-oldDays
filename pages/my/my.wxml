@@ -23,4 +23,14 @@
             </view>
         </view>
     </view>
+    <view class="preview">
+        <view class="preview-title">
+            <text>经 典</text>
+        </view>
+        <view class="preview-container">
+            <block wx:for="{{favClassicData}}" wx:key="*this" wx:for-item="data">
+                <c-preview class="preview-box" previewData="{{data}}"></c-preview>
+            </block>
+        </view>
+    </view>
 </view>

@@ -26,7 +26,10 @@ class ClassicModel extends HTTP {
     }
   }
 
-  getFavClassicItems() {}
+  //获取用户收藏期刊
+  getFavorClassicItems() {
+    return this.request({ url: `/classic/favor`, data: {} })
+  }
 
   //设置最新一期期刊缓存
   setLatestIndex(res) {

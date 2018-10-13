@@ -1,17 +1,21 @@
 import { BookModel } from "../../models/book"
+import { ClassicModel } from "../../models/classic"
 const bookModel = new BookModel()
+const classic = new ClassicModel()
 
 Page({
   data: {
     isAuthorized: false,
     userInfo: {},
-    favBookCount: 0
+    favBookCount: 0,
+    favClassicData: {},
   },
 
   //此处不用onLoad是为了在收藏某书后该页面能实时更新收藏数据
   onShow: function() {
     this.hasUserAuthorized()
     this._getFavorBookCount()
+    this._getFavorClassicItems()
   },
 
   //判断是否授权并自动更新信息
@@ -51,8 +55,18 @@ Page({
   _getFavorBookCount() {
     bookModel.getFavorBookCount().then(res => {
       this.setData({
-        favBookCount: res.count
+        favBookCount: res.count,
       })
+    })
+  },
+
+  //获取用户收藏期刊信息
+  _getFavorClassicItems() {
+    classic.getFavorClassicItems().then(res => {
+      this.setData({
+        favClassicData: res,
+      })
+      console.log(res)
     })
   },
 })

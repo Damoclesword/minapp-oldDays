@@ -106,3 +106,27 @@
   font-size: 40rpx;
   line-height: 40rpx;
 }
+
+.preview {
+  margin-top: 60rpx;
+}
+
+.preview-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.preview-container {
+  column-count: 2;
+  background: #f9f9f9;
+  padding: 20rpx 4%;
+}
+
+.preview-box {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 4%;
+  padding-top: 5%;
+}

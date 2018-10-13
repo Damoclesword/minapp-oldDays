@@ -6,17 +6,21 @@ Component({
     like: {
       type: Boolean,
       value: false,
-      observer: function() {}
+      observer: function() {},
     },
     count: {
-      type: Number
+      type: Number,
     },
     art_id: {
-      type: Number
+      type: Number,
     },
     type: {
-      type: Number
-    }
+      type: Number,
+    },
+    readOnly: {
+      type: Boolean,
+      value: false,
+    },
   },
 
   /**
@@ -24,7 +28,7 @@ Component({
    */
   data: {
     likeSrc: "images/like.png",
-    dissLikeSrc: "images/like@diss.png"
+    dissLikeSrc: "images/like@diss.png",
   },
 
   /**
@@ -32,21 +36,23 @@ Component({
    */
   methods: {
     onLike: function(event) {
-      let like = this.properties.like;
-      let count = this.properties.count;
-      count = like ? count - 1 : count + 1;
+      //不可点击状态
+      if (this.properties.readOnly) return
+      let like = this.properties.like
+      let count = this.properties.count
+      count = like ? count - 1 : count + 1
       this.setData({
         count: count,
-        like: !like
-      });
-      let behaviour = this.properties.like ? "like" : "cancel";
+        like: !like,
+      })
+      let behaviour = this.properties.like ? "like" : "cancel"
       this.triggerEvent(
         "like",
         {
           behaviour: behaviour,
         },
         {}
-      );
-    }
-  }
-});
+      )
+    },
+  },
+})
