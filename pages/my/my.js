@@ -66,7 +66,6 @@ Page({
       this.setData({
         favClassicData: res,
       })
-      console.log(res)
     })
   },
 })

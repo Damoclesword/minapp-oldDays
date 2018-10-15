@@ -1,4 +1,3 @@
-// import { HTTP } from "../util/http"
 import { HTTP } from "../util/http-p"
 
 class ClassicModel extends HTTP {

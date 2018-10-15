@@ -36,7 +36,7 @@ Page({
       art_id: this.data.classicData.id,
       type: this.data.classicData.type,
     }
-    like.postLike(behaviour, data, res => {
+    like.postLike(behaviour, data).then(res => {
       let index = this.data.classicData.index
       //此处刷新本地缓存
       like.refreshCache(index, behaviour)
